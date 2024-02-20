@@ -1,0 +1,6 @@
+framework module Gofferwall {
+  umbrella header "Gofferwall.h"
+  export *
+
+  module * { export * }
+}

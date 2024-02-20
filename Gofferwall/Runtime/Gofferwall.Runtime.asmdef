@@ -1,0 +1,14 @@
+{
+  "name": "com.tnk.gofferwall",
+  "rootNamespace": "com.tnk.gofferwall",
+  "references": [],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

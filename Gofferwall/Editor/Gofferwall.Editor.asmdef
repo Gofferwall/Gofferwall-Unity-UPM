@@ -1,0 +1,16 @@
+{
+  "name": "com.tnk.gofferwall.Editor",
+  "rootNamespace": "com.tnk.gofferwall",
+  "references": [],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}
