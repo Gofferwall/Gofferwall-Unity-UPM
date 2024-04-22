@@ -1,7 +1,7 @@
 # Gofferwall Unity Package Manager
-[![GitHub package.json version](https://img.shields.io/badge/Unity-1.1.0-blue)](../../releases)
-[![GitHub package.json version](https://img.shields.io/badge/Android-1.1.0-blue)](https://github.com/Gofferwall/Gofferwall-Android-Sample)
-[![GitHub package.json version](https://img.shields.io/badge/iOS-1.1.0-blue)](https://github.com/Gofferwall/Gofferwall-iOS-Sample)
+[![GitHub package.json version](https://img.shields.io/badge/Unity-1.2.0-blue)](../../releases)
+[![GitHub package.json version](https://img.shields.io/badge/Android-1.2.0-blue)](https://github.com/Gofferwall/Gofferwall-Android-Sample)
+[![GitHub package.json version](https://img.shields.io/badge/iOS-1.2.0-blue)](https://github.com/Gofferwall/Gofferwall-iOS-Sample)
 
 - **Unity Editor 2022.3.9f1 이하에서 iOS xcode15 빌드 시 ${\color{red}사용 불가}$**
 - Unity Editor : 2021.3.8f1+, 2022.3.10f1+
@@ -96,6 +96,7 @@ https://github.com/Gofferwall/Gofferwall-Unity-UPM.git?path=Gofferwall
 
 ![gofferwallJson1](https://github.com/Gofferwall/Gofferwall-Unity-UPM/assets/60415962/7ec36871-4991-4e42-abc4-9fe9c551ac7f)
 - `Create Gofferwall Android & iOS Files`를 선택
+- ${\color{red}버전}$ ${\color{red}변경}$ ${\color{red}시}$마다 `Create Gofferwall Android & iOS Files`를 선택해야 해당 값으로 앱 설정 됨
 - 인터넷이 연결되어 있어야 함
 > - [Android 결과 확인](./docs/upm_result.md#4-gofferwallsdk-settings)
 <br/>
@@ -237,7 +238,7 @@ private void OnOfferwallAdFailedToShowCallback(object sender, Gofferwall.Model.S
 - Callback은 Unity의 main thread에서 호출
 <br/>
 
-### 7. Other API
+### 5. Other API
 > - [Other API](./docs/other_api.md#other-api-1)
 
 <br/><br/>

@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.9 (swiftlang-5.9.0.128.108 clang-1500.0.40.1)
+// swift-compiler-version: Apple Swift version 5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)
 // swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name TnkRwdSdk2
 // swift-module-flags-ignorable: -enable-bare-slash-regex
 import AVFoundation
@@ -1199,6 +1199,9 @@ public protocol EventViewListener : ObjectiveC.NSObjectProtocol {
   public var stickyOffset: CoreFoundation.CGFloat
   public var menuMenuAreaBackgroundColor: UIKit.UIColor
   @objc public var defaultPointUnit: Swift.String
+  @objc public var defaultUnitName: Swift.String
+  @objc public var titlePointIconImage: TnkRwdSdk2.ImageAttribute?
+  @objc public var needPointView: UIKit.UIView?
   @objc public var listViewTopMargin: CoreFoundation.CGFloat
   @objc public var listViewBottomMargin: CoreFoundation.CGFloat
   @objc public var detailViewLayout: TnkRwdSdk2.AdDetailViewLayout
@@ -1400,6 +1403,7 @@ extension TnkRwdSdk2.StoreLayout {
   @objc public var loadingErrorInfoImage: TnkRwdSdk2.ImageAttribute
   @objc public var privacyNotAgreedInfoImage: TnkRwdSdk2.ImageAttribute
   @objc public var menuPinToVisibleBounds: TnkRwdSdk2.MenuBound
+  @objc public var viewScrollTopToSafeArea: Swift.Bool
   @objc public var menuMenuHidden: Swift.Bool
   @objc public var menuFilterHidden: Swift.Bool
   public var menuMenuTypes: [TnkRwdSdk2.MenuType]
@@ -1560,7 +1564,8 @@ extension TnkRwdSdk2.StoreLayout {
   @objc public var inputFieldBackground: UIKit.UIColor
   @objc public var inputFieldBorderColor: UIKit.UIColor
   @objc public var inputFieldTintBorderColor: UIKit.UIColor
-  @objc public var inputFieldBorderWidth: CoreFoundation.CGFloat
+  @objc public var inputFieldDisableBorderWidth: CoreFoundation.CGFloat
+  @objc public var inputFieldEnableBorderWidth: CoreFoundation.CGFloat
   @objc public var inputFieldCornerRadius: CoreFoundation.CGFloat
   @objc public var leftButton: TnkRwdSdk2.ButtonAttribute
   @objc public var rightButton: TnkRwdSdk2.ButtonAttribute
@@ -1657,6 +1662,7 @@ extension TnkRwdSdk2.StoreLayout {
   @objc optional func didAdDataLoaded(placementId: Swift.String, customData: Swift.String?)
   @objc optional func didFailedToLoad(placementId: Swift.String)
   @objc optional func didAdItemClicked(placementId: Swift.String, appId: Swift.Int, appName: Swift.String)
+  @objc optional func didAdItemClosed(placementId: Swift.String, appId: Swift.Int)
   @objc optional func didMoreLinkClicked(placementId: Swift.String)
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc @_Concurrency.MainActor(unsafe) public class AdPlacementView : UIKit.UIView, UIKit.UICollectionViewDelegate {
@@ -1678,7 +1684,7 @@ extension TnkRwdSdk2.AdPlacementView {
   @_Concurrency.MainActor(unsafe) public func getAdListJson() -> Swift.String?
   @_Concurrency.MainActor(unsafe) public func getPubInfo() -> TnkRwdSdk2.TnkPlacementPubInfo
   @_Concurrency.MainActor(unsafe) public func getPubInfoJson() -> Swift.String?
-  @_Concurrency.MainActor(unsafe) public func onItemClick(appId: Swift.Int)
+  @_Concurrency.MainActor(unsafe) public func onItemClick(appId: Swift.Int, completion: @escaping (Swift.Bool, TnkRwdSdk2.TnkError?) -> ())
 }
 @_inheritsConvenienceInitializers @objc public class TnkTermLayout : ObjectiveC.NSObject {
   @objc public var titleLb: TnkRwdSdk2.LabelAttribute
@@ -1695,6 +1701,13 @@ extension TnkRwdSdk2.AdPlacementView {
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class TnkBaseNaviController : UIKit.UINavigationController {
+  @_Concurrency.MainActor(unsafe) public var fixToPortrait: Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var shouldAutorotate: Swift.Bool {
+    @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var supportedInterfaceOrientations: UIKit.UIInterfaceOrientationMask {
+    @objc get
+  }
   @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
   @available(iOS 5.0, *)
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(navigationBarClass: Swift.AnyClass?, toolbarClass: Swift.AnyClass?)

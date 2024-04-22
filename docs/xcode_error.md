@@ -1,5 +1,5 @@
 # Unity Editor 특정 버전에서 Build Error
-- 검토한 Unity Editor : 21.3.8, 21.3.19, 21.3.30 ~ 34, 22.2.21, 22.3.0 ~ 18
+- 검토한 Unity Editor : 20.3.39, 21.3.8, 21.3.19, 21.3.23, 21.3.30 ~ 37, 22.2.21, 22.3.0 ~ 25
 - 오류 확인한 Unity Editor : 21.3.33 ~ 34, 22.3.14 ~ 15
 - [Issuetracker 확인](https://issuetracker.unity3d.com/issues/ios-embed-frameworks-build-phase-is-duplicated-when-multiple-frameworks-are-present-in-the-project)
 <br/>
