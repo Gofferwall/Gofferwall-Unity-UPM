@@ -7,5 +7,6 @@
       <repository>https://repository.adiscope.com/repository/adiscope-global/</repository>
     </repositories>
     <androidPackage spec="com.adiscope.global:adiscope-sdk:1.1.0" />
+    <androidPackage spec="com.adiscope.global:adiscope-sdk:1.2.0" />
   </androidPackages>
 </dependencies>
