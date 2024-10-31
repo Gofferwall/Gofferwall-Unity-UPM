@@ -6,14 +6,15 @@
 	<array>
 		<dict>
 			<key>NSPrivacyCollectedDataType</key>
-			<string>NSPrivacyCollectedDataTypeOtherUsageData</string>
+			<string>NSPrivacyCollectedDataTypeEmailAddress</string>
 			<key>NSPrivacyCollectedDataTypeLinked</key>
 			<true/>
 			<key>NSPrivacyCollectedDataTypeTracking</key>
-			<true/>
+			<false/>
 			<key>NSPrivacyCollectedDataTypePurposes</key>
 			<array>
 				<string>NSPrivacyCollectedDataTypePurposeThirdPartyAdvertising</string>
+				<string>NSPrivacyCollectedDataTypePurposeDeveloperAdvertising</string>
 			</array>
 		</dict>
 		<dict>

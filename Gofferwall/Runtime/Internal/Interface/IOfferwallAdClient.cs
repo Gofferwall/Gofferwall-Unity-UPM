@@ -18,5 +18,8 @@ namespace Gofferwall.Internal.Interface
         bool Show(string unitId);
         bool Show4TNK(string unitId);
         bool Show4Tapjoy(string unitId);
+        
+        bool SetColorOfferwall4TNK(float red, float green, float blue, float alpha);
+        bool SetPointIconOfferwall4TNK(string imageName);
     }
 }

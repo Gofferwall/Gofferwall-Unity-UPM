@@ -3,6 +3,7 @@
 using System;
 using System.IO;
 using System.Net;
+using System.Linq;
 using UnityEditor;
 using UnityEditor.iOS.Xcode;
 using UnityEditor.iOS.Xcode.Extensions;
@@ -23,6 +24,7 @@ namespace Gofferwall.PostProcessor
             CopyGofferwallFrameworks(path, new List<GofferwallFrameworkType>() {
                 GofferwallFrameworkType.Core
             });
+            UpdateBundleResources(path);
             UpdateBuildSetting(path);
             UpdateInfoPlist(path);
         }
@@ -89,6 +91,41 @@ namespace Gofferwall.PostProcessor
             PBXProject project = new PBXProject();
             project.ReadFromString(contents);
             File.WriteAllText(projectPath, project.WriteToString());
+        }
+
+        private static void UpdateBundleResources(string path) {
+            PBXProject project = new PBXProject();
+            string projectPath = PBXProject.GetPBXProjectPath(path);
+            string contents = File.ReadAllText(projectPath);
+            project.ReadFromString(contents); 
+
+            string defaultTarget = GetDefaultTarget(project);
+            string resourcesFolderPath = Path.Combine(Application.dataPath, "GofferwallResources");
+            string destinationFolderPath = Path.Combine(path, "GofferwallResources");
+            if (!Directory.Exists(resourcesFolderPath)) {
+                return;
+            }
+
+            string[] imageFiles = Directory.GetFiles(resourcesFolderPath, "*.*", SearchOption.AllDirectories).Where(file => file.EndsWith(".png") || file.EndsWith(".jpg")).ToArray();
+            if (imageFiles.Length == 0) {
+                return;
+            }
+
+            if (!Directory.Exists(destinationFolderPath)) {
+                Directory.CreateDirectory(destinationFolderPath);
+            }
+            foreach (string imagePath in imageFiles) {
+                string fileName = Path.GetFileName(imagePath);
+                string destinationPath = Path.Combine(destinationFolderPath, fileName);
+                File.Copy(imagePath, destinationPath, true);
+
+                string absolutePath = destinationPath;
+                string fileGuid = project.AddFile(absolutePath, fileName, PBXSourceTree.Absolute);
+                // project.AddFileToBuild(defaultTarget, fileGuid);
+                var resourcesBuildPhase = project.GetResourcesBuildPhaseByTarget(defaultTarget);
+                project.AddFileToBuildSection(defaultTarget, resourcesBuildPhase, fileGuid);
+            }
+            project.WriteToFile(projectPath);
         }
 
         private static void UpdateBuildSetting(string path) {

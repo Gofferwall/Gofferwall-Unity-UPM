@@ -52,6 +52,20 @@ namespace Gofferwall.Internal.Platform.IOS
 			return showOfferwall4Tapjoy (unitId, onOfferwallAdOpened, onOfferwallAdFailedToShow);
 		}
 
+		[DllImport ("__Internal")]
+		private static extern bool setColorOfferwall4TNK(float red, float green, float blue, float alpha);
+        public bool SetColorOfferwall4TNK(float red, float green, float blue, float alpha)
+        {
+            return setColorOfferwall4TNK(red, green, blue, alpha);
+        }
+
+		[DllImport ("__Internal")]
+		private static extern bool setPointIconOfferwall4TNK(string imageName);
+        public bool SetPointIconOfferwall4TNK(string imageName)
+        {
+            return setPointIconOfferwall4TNK(imageName);
+        }
+
 		#endregion
 
 		#region Callbacks

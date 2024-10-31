@@ -1,0 +1,19 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)
+// swift-module-flags: -target arm64-apple-ios10.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name Tapjoy
+import AVFoundation
+import AdSupport
+import AppTrackingTransparency
+import CommonCrypto
+import CoreFoundation
+import CryptoKit
+import Foundation
+import Swift
+@_exported import Tapjoy
+import UIKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+extension BinaryFloatingPoint {
+  public func decimalRounded(to decimalPlaces: Int) -> Decimal
+}

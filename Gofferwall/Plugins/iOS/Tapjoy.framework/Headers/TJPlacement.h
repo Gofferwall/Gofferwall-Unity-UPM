@@ -141,38 +141,6 @@ didRequestPurchase:(nullable TJActionRequest *)request
 @end
 
 /**
- * Deprecated since 13.2.0
- * Delegate used to receive video events from TJPlacement
- */
-TJC_DEPRECATION_WARNING(13.2.0)
-@protocol TJPlacementVideoDelegate <NSObject>
-
-@optional
-
-/**
- * Deprecated since 13.2.0
- * Called when a placement video starts playing.
- *
- */
-- (void)videoDidStart:(TJPlacement *)placement TJC_DEPRECATION_WARNING(13.2.0);
-
-/**
- * Deprecated since 13.2.0
- * Called when a placement video has completed playing.
- *
- */
-- (void)videoDidComplete:(TJPlacement *)placement TJC_DEPRECATION_WARNING(13.2.0);
-
-/**
- * Deprecated since 13.2.0
- * Called when a placement video related error occurs.
- *
- * @param errorMsg Error message.
- */
-- (void)videoDidFail:(TJPlacement *)placement error:(nullable NSString *)errorMsg TJC_DEPRECATION_WARNING(13.2.0);
-@end
-
-/**
   The Tapjoy placement-Based Framework allows one to identify key placements within their application during development,
   and then reconfigure them on the dashboard as desired to help maximize monetization and engagement, without the need to update or resubmit the application.
   
@@ -196,11 +164,6 @@ TJC_DEPRECATION_WARNING(13.2.0)
 /** The TJPlacementDelegate used to handle responses that are received upon sending this placement*/
 @property (nullable, nonatomic, weak) id<TJPlacementDelegate> delegate;
 
-/**
- * Deprecated since 13.2.0
- * The delegate that implements the TJPlacementVideoDelegate protocol
- */
-@property (nullable, nonatomic, weak) id<TJPlacementVideoDelegate> videoDelegate TJC_DEPRECATION_WARNING(13.2.0);
 
 /** The name of the placement */
 @property (nonatomic, copy) NSString *placementName;
@@ -216,8 +179,6 @@ TJC_DEPRECATION_WARNING(13.2.0)
 
 /** Allows plugins to specify a topViewController class (currently only used by Unity) */
 @property (nullable, nonatomic, copy) NSString *topViewControllerClassName;
-
-@property (readonly, nonatomic) NSString *beaconId;
 
 /** The point where Offerwall content is being presented. */
 @property (nonatomic, assign) TJEntryPoint entryPoint;
@@ -245,39 +206,6 @@ TJC_DEPRECATION_WARNING(13.2.0)
  */
 + (void)dismissContent;
 
-/**
- * Deprecated since 13.2.0
- * Mediation params(used by mediation adapters only)
- *
- */
-@property (nullable, nonatomic, copy) NSString *mediationAgent TJC_DEPRECATION_WARNING(13.2.0);
-@property (nullable, nonatomic, copy) NSString *mediationId TJC_DEPRECATION_WARNING(13.2.0);
-
-+ (nullable instancetype)placementWithName:(NSString *)placementName
-                   mediationAgent:(nullable NSString *)mediationAgent
-                      mediationId:(nullable NSString *)mediationId
-                         delegate:(nullable id<TJPlacementDelegate>)delegate TJC_DEPRECATION_WARNING(13.2.0);
-
-@property (nullable, nonatomic, copy) NSString *adapterVersion TJC_DEPRECATION_WARNING(13.2.0);
-
-/**
- * Deprecated since 13.2.0
- * Programmatic mediation
- */
-@property (nullable, nonatomic, copy) NSDictionary *auctionData TJC_DEPRECATION_WARNING(13.2.0);
-
-/**
- * Deprecated since 13.2.0
- * Used by limited SDK request Only
- */
-@property (nonatomic, assign) BOOL isLimited TJC_DEPRECATION_WARNING(13.2.0);
-
-/**
- * Deprecated since 13.2.0
- */
-+ (nullable instancetype)limitedPlacementWithName:(NSString *)placementName
-                          mediationAgent:(nullable NSString *)mediationAgent
-                                delegate:(nullable id<TJPlacementDelegate>)delegate TJC_DEPRECATION_WARNING(13.2.0);
 @end
 
 @interface TJPlacement (Currency)

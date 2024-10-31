@@ -1,0 +1,3 @@
+framework module Tapjoy_Private {
+    requires Tapjoy
+}

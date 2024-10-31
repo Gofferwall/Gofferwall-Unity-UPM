@@ -82,6 +82,17 @@ namespace Gofferwall.Internal.Platform.MockPlatform
 #endif
             return true;
         }
+
+        public bool SetColorOfferwall4TNK(float red, float green, float blue, float alpha)
+        {
+            return false;
+        }
+
+        public bool SetPointIconOfferwall4TNK(string imageName)
+        {
+            return false;
+        }
+
         #endregion
 
         static void DelayedCallback(Action action, int delay)

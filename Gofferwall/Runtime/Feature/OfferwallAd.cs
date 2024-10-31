@@ -44,5 +44,15 @@ namespace Gofferwall.Feature
         {
             return client.Show4Tapjoy(unitId);
         }
+
+        public bool SetColorOfferwall4TNK(float red, float green, float blue, float alpha)
+        {
+            return client.SetColorOfferwall4TNK(red, green, blue, alpha);
+        }
+
+        public bool SetPointIconOfferwall4TNK(string imageName)
+        {
+            return client.SetPointIconOfferwall4TNK(imageName);
+        }
     }
 }

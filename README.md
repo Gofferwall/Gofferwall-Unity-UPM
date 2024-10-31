@@ -1,14 +1,14 @@
 # Gofferwall Unity Package Manager
-[![GitHub package.json version](https://img.shields.io/badge/Unity-1.2.0-blue)](../../releases)
-[![GitHub package.json version](https://img.shields.io/badge/Android-1.2.0-blue)](https://github.com/Gofferwall/Gofferwall-Android-Sample)
-[![GitHub package.json version](https://img.shields.io/badge/iOS-1.2.0-blue)](https://github.com/Gofferwall/Gofferwall-iOS-Sample)
+[![GitHub package.json version](https://img.shields.io/badge/Unity-1.3.0-blue)](../../releases)
+[![GitHub package.json version](https://img.shields.io/badge/Android-1.3.0-blue)](https://github.com/Gofferwall/Gofferwall-Android-Sample)
+[![GitHub package.json version](https://img.shields.io/badge/iOS-1.3.0-blue)](https://github.com/Gofferwall/Gofferwall-iOS-Sample)
 
 - **Unity Editor 2022.3.9f1 이하에서 iOS xcode15 빌드 시 ${\color{red}사용 불가}$**
 - Unity Editor : 2021.3.8f1+, 2022.3.10f1+
 - Android Target API Level : 31+
 - Android Minimum API Level : 16
 - iOS Minimum Version : 12.0
-- Xcode Minimum Version : Xcode 14.3
+- Xcode Minimum Version : Xcode 15.1
 <br/>
 
 ## Contents

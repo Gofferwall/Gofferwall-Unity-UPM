@@ -53,42 +53,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (strong, nonatomic, nullable) NSString *USPrivacy;
 
-
-/**
-* Deprecated since 13.1.0
-* This is used for sending User's consent to behavioral advertising such as in the context of GDPR
-* The consent value can be "0" (User has not provided consent), "1" (User has provided consent) or
-* a daisybit string as suggested in IAB's Transparency and Consent Framework
-*
-* @param value "0" (User has not provided consent), "1" (User has provided consent) or a daisybit string as suggested in IAB's Transparency and Consent Framework
-**/
-- (void)setUserConsent:(NSString *)value TJC_DEPRECATION_WARNING(13.1.0);
-
-/**
-* Deprecated since 13.1.0
-* This can be used by the integrating App to indicate if the user falls in any of the GDPR applicable countries
-* (European Economic Area). The value should be set to YES when User (Subject) is applicable to GDPR regulations
-* and NO when User is not applicable to GDPR regulations. In the absence of this call, Tapjoy server makes the
-* determination of GDPR applicability.
-*
-* @param gdprApplicability YES if the user is affected by GDPR, NO if they are not.
-* userConsent = "0" (User has not provided consent), "1" (User has provided consent) or a daisybit string as suggested in IAB's Transparency and Consent Framework
-*/
-- (void)setSubjectToGDPR:(BOOL)gdprApplicability TJC_DEPRECATION_WARNING(13.1.0);
-
-/**
-* Deprecated since 13.1.0
-* In the US, the Children’s Online Privacy Protection Act (COPPA) imposes certain requirements on operators of online services that (a)
-* have actual knowledge that the connected user is a child under 13 years of age, or (b) operate services (including apps) that are
-@@ -42,19 +29,29 @@ NS_ASSUME_NONNULL_BEGIN
-* under the applicable minimum age, utilize this method to access Tapjoy’s monetization capability. This method will set
-* ad_tracking_enabled to false for Tapjoy which only shows the user contextual ads. No ad tracking will be done on this user.
-*
-* @param isBelowConsentAge YES if the user is affected by COPPA, NO if they are not.
-* belowConsentAge = YES if the user is affected by COPPA, NO if they are not.
-*/
-- (void)setBelowConsentAge:(BOOL)isBelowConsentAge TJC_DEPRECATION_WARNING(13.1.0);
-
 + (instancetype)sharedInstance;
 
 @end;

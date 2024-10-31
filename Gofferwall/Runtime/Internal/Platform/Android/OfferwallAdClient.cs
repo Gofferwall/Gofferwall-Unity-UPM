@@ -1,5 +1,4 @@
 ﻿#if UNITY_ANDROID
-using Gofferwall.Feature;
 using Gofferwall.Internal.Interface;
 using Gofferwall.Model;
 using System;
@@ -145,6 +144,37 @@ namespace Gofferwall.Internal.Platform.Android
 
                 jc.CallStatic(Values.MTD_SHOW, unitId, "Tapjoy", activity, listener);
                 return true;
+            }
+        }
+
+        public bool SetColorOfferwall4TNK(float red, float green, float blue, float alpha)
+        {
+            // Android 미지원 기능
+            return false;
+        }
+
+        public bool SetPointIconOfferwall4TNK(string imageName)
+        {
+            AndroidJavaObject activity = null;
+            using (AndroidJavaClass jc = new AndroidJavaClass(Values.PKG_GLOBAL_OFFERWALL))
+            {
+                if(jc == null)
+                {
+                    Debug.LogError("Android.OfferwallAdClient<SetColorOfferwall4TNK> " +
+                        Values.PKG_GLOBAL_OFFERWALL + ": null");
+                    return false;
+                }
+
+                using (AndroidJavaClass unityPlayer = new AndroidJavaClass(Values.PKG_UNITY_PLAYER))
+                {
+                    if (unityPlayer == null)
+                    {
+                        Debug.LogError("Android.OfferwallAdClient<SetColorOfferwall4TNK> UnityPlayer: null");
+                        return false;
+                    }
+                    activity = unityPlayer.GetStatic<AndroidJavaObject>(Values.MTD_CURRENT_ACTIVITY);
+                }
+                return jc.CallStatic<bool>(Values.MTD_SET_IMAGE, imageName);;
             }
         }
 

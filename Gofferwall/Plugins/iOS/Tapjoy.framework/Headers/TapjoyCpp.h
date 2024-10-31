@@ -32,7 +32,6 @@ class TJSpendCurrencyListener;
 class TJAwardCurrencyListener;
 class TJEarnedCurrencyListener;
 class TJSetUserIDListener;
-class TJVideoListener;
 class TJPlacementListener;
 
 /**
@@ -157,6 +156,18 @@ public:
     /**
      * @brief Tracks a purchase
      *
+     * @param currencyCode
+     *        the currency code of price as an alphabetic currency code
+     *        specified in ISO 4217, i.e. "USD", "KRW"
+     * @param price
+     *        the price of product
+     */
+    static void trackPurchase(const char* currencyCode, double price);
+    
+    /**
+     * @deprecated Deprecated since 14.0.0
+     * @brief Tracks a purchase
+     *
      * @param productId
      *        the product identifier
      * @param currencyCode
@@ -168,10 +179,11 @@ public:
      *        the campaign id of the Purchase Action Request if it
      *        initiated this purchase, can be null
      */
-    static void trackPurchase(const char* productId, const char* currencyCode, double price, const char* campaignId);
+    static void trackPurchase(const char* productId, const char* currencyCode, double price, const char* campaignId) TJC_DEPRECATION_WARNING(14.0.0);
     
 #if defined(ANDROID)
     /**
+     * @deprecated Deprecated since 14.0.0
      * @brief Tracks a purchase with JSON data from the Google Play store.
      *        Also performs In-app Billing validation if purchaseData and dataSignature are given.
      *
@@ -194,6 +206,7 @@ public:
 #endif
 #if defined(__APPLE__)
     /**
+     * @deprecated Deprecated since 14.0.0
      * @brief Tracks a purchase from the Apple App Store.
      *
      * @param productId
@@ -208,64 +221,9 @@ public:
      * @param campaignId
      *        the campaign id of the purchase request which initiated this purchase, can be null
      */
-    static void trackPurchaseInAppleAppStore(const char* productId, const char* currencyCode, double price, const char* transactionId, const char* campaignId);
+    static void trackPurchaseInAppleAppStore(const char* productId, const char* currencyCode, double price, const char* transactionId, const char* campaignId) TJC_DEPRECATION_WARNING(14.0.0);
 #endif
-    
-    /**
-     * @deprecated Deprecated since 13.2.0
-     * @brief Tracks an event of the given name without category
-     */
-    static void trackEvent(const char* name) TJC_DEPRECATION_WARNING(13.2.0);
-    
-    /**
-     * @deprecated Deprecated since 13.2.0
-     * @brief Tracks an event of the given name without category, with a value.
-     *
-     * @param name
-     *        the name of event
-     * @param value
-     *        the value of event
-     */
-    static void trackEvent(const char* name, int64_t value) TJC_DEPRECATION_WARNING(13.2.0);
-    
-    /**
-     * @deprecated Deprecated since 13.2.0
-     * @brief Tracks an event of the given category and name, with a value.
-     */
-    static void trackEvent(const char* category, const char* name, int64_t value) TJC_DEPRECATION_WARNING(13.2.0);
-    
-    /**
-     * @deprecated Deprecated since 13.2.0
-     * @brief Tracks an event of the given category and name, with two parameters.
-     */
-    static void trackEvent(const char* category, const char* name, const char* parameter1, const char* parameter2) TJC_DEPRECATION_WARNING(13.2.0);
-    
-    /**
-     * @deprecated Deprecated since 13.2.0
-     * @brief Tracks an event of the given category and name, with two parameters and a
-     *        value.
-     */
-    static void trackEvent(const char* category, const char* name, const char* parameter1, const char* parameter2, int64_t value) TJC_DEPRECATION_WARNING(13.2.0);
-    
-    /**
-     * @deprecated Deprecated since 13.2.0
-     * @brief Tracks an event of the given category and name, with two parameters and a
-     *        named values.
-     */
-    static void trackEvent(const char* category, const char* name, const char* parameter1, const char* parameter2, const char* valueName, int64_t value) TJC_DEPRECATION_WARNING(13.2.0);
-    
-    /**
-     * @deprecated Deprecated since 13.2.0
-     * @brief Tracks an event of the given category and name, with two parameters and
-     *        two named values.
-     */
-    static void trackEvent(const char* category, const char* name, const char* parameter1, const char* parameter2, const char* value1Name, int64_t value1, const char* value2Name, int64_t value2) TJC_DEPRECATION_WARNING(13.2.0);
-    
-    /**
-     * @deprecated Deprecated since 13.2.0
-     */
-    static void trackEvent(const char* category, const char* name, const char* parameter1, const char* parameter2, const char* value1Name, int64_t value1, const char* value2Name, int64_t value2, const char* value3Name, int64_t value3) TJC_DEPRECATION_WARNING(13.2.0);
-    
+
     /**
      * @brief Manual session tracking. Notifies the SDK that new session of your
      *        application has been started.
@@ -286,23 +244,19 @@ public:
      *
      * @param userID
      *        user ID you wish to assign to this device
-     */
-    static void setUserID(const char* userID);
-    
-    /**
-     * @brief Assigns a user ID for this user/device. This is used to identify the user
-     *        in your application.
-     *
-     *        This is REQUIRED for NON-MANAGED currency apps.
-     *
-     * @param userID
-     *        user ID you wish to assign to this device
      *
      * @param listener
      *        class implementing TJUserIdListener
      */
     static void setUserID(const char* userID, TJSetUserIDListener* listener);
-    
+
+    /**
+     * @brief Gets the id of the user.
+     *
+     * @return the id of the user.
+     */
+    static const char* getUserID();
+
     /**
      * @brief Assign a custom parameter associated with any following placement requests that contains an ad type. We will return this value on the currency callback.
      *        Only applicable for publishers who manage their own currency servers. This value does NOT get unset with each subsequent placement request.
@@ -357,26 +311,6 @@ public:
     static int getMaxLevel();
     
     /**
-     * @deprecated Deprecated since 13.2.0
-     * @brief Sets the friends count of the user.
-     *
-     * @param friendCount
-     *        the number of friends
-     */
-    static void setUserFriendCount(int friendCount) TJC_DEPRECATION_WARNING(13.2.0);
-    
-    /**
-     * @deprecated Deprecated since 13.2.0
-     * @brief Sets a variable of user for the cohort analysis.
-     *
-     * @param variableIndex
-     *        the index of the variable to set, must be in the range 1 to 5
-     * @param value
-     *        the value of the variable to set, or null to unset
-     */
-    static void setUserCohortVariable(int variableIndex, const char* value) TJC_DEPRECATION_WARNING(13.2.0);
-    
-    /**
      * @brief Removes all tags from the user.
      */
     static void clearUserTags();
@@ -398,61 +332,16 @@ public:
     static void removeUserTag(const char* tag);
     
     /**
-     * @brief Sets the video listener. Use this to receive callbacks for on video
-     *        start, complete and error.
-     *
-     * @param listener
-     *        video to receive start/complete/error callbacks
-     *
-     * @deprecated Deprecated since 13.2.0.
-     */
-
-    static void setVideoListener(TJVideoListener* listener) TJC_DEPRECATION_WARNING(13.2.0);
-    
-    /**
+     * @deprecated Deprecated since 14.1.0
      * @brief Informs the Tapjoy server that the specified Pay-Per-Action was
      *        completed. Should be called whenever a user completes an in-game action.
      *
      * @param actionID
      *        The action ID of the completed action.
      */
-    static void actionComplete(const char* actionID);
+    static void actionComplete(const char* actionID) TJC_DEPRECATION_WARNING(14.1.0);
     
 #if defined(ANDROID)
-    /**
-     * @deprecated Deprecated since 13.2.0.
-     * @brief Returns true if the push notification is disabled.
-     */
-    static bool isPushNotificationDisabled();
-
-    /**
-     * @deprecated Deprecated since 13.2.0.
-     * @brief Sets whether the push notification is disabled.
-     * @param disabled
-     *        true to disable the push notification
-     */
-    static void setPushNotificationDisabled(bool disabled);
-
-    /**
-     * @deprecated Deprecated since 13.2.0.
-     * @brief Set Firebase Token to initiate Firebase messaging for your application.
-     *        Call this method when the Firebase token service callback is triggered to update the token.
-     *
-     * @param deviceToken
-     *           deviceToken is a registration token for firebase senderID and AppID to register in Tapjoy Server.
-     *           It is updated through Firebase token service callback triggered everytime Firebase update the token.
-     */
-    static void setDeviceToken(const char* deviceToken);
-
-    /**
-     * @deprecated Deprecated since 13.2.0.
-     * @brief Sets the context and RemoteMessage data so that our SDK can display the push notification.
-     *        Call this when a message is received from Firebase
-     *
-     * @param context: The Application context (jobject)
-     * @param remoteMessage: The message(jobject) received from Firebase
-     */
-    static void setReceiveRemoteNotification(jobject context,jobject remoteMessage);
     
     /**
      * @brief This is to opt out passing advertising_id param in the subsequent network requests
@@ -484,6 +373,7 @@ public:
     
     virtual void onConnectSuccess() {}
     virtual void onConnectFailure(int code, const char* error) {}
+    virtual void onConnectWarning(int code, const char* error) {}
 };
 
 class TJAwardCurrencyListener {
@@ -539,16 +429,6 @@ public:
     
     virtual void onSetUserIDSuccess() {}
     virtual void onSetUserIDFailure(const char* error) {}
-};
-
-class TJC_DEPRECATION_WARNING(13.2.0) TJVideoListener {
-public:
-    virtual ~TJVideoListener() {}
-    
-    virtual void onVideoStart() {}
-    virtual void onVideoClose() {}
-    virtual void onVideoError(int statusCode) {}
-    virtual void onVideoComplete() {}
 };
 
 class TJPlacementListener {
@@ -610,18 +490,6 @@ public:
     static TJPrivacyPolicyHandle getPrivacyPolicy();
     
     /**
-     * Deprecated since 13.1.0
-     * @brief This can be used by the integrating App to indicate if the user falls in any of the GDPR applicable countries
-     *        (European Economic Area). The value should be set to TRUE when User (Subject) is applicable to GDPR regulations
-     *        and FALSE when User is not applicable to GDPR regulations. In the absence of this call, Tapjoy server makes the
-     *        determination of GDPR applicability.
-     *
-     * @param gdprApplicable
-     *        true if GDPR applies to this user, false otherwise
-     */
-    static void setSubjectToGDPR(TJPrivacyPolicyHandle handle, bool gdprApplicable);
-    
-    /**
      * @brief This can be used by the integrating App to indicate if the user falls in any of the GDPR applicable countries
      *        (European Economic Area). The value should be set to TRUE when User (Subject) is applicable to GDPR regulations
      *        and FALSE when User is not applicable to GDPR regulations. In the absence of this call, Tapjoy server makes the
@@ -633,16 +501,6 @@ public:
     static void setSubjectToGDPRStatus(TJPrivacyPolicyHandle handle, TJStatusCpp gdprStatus);
     
     /**
-     * Deprecated since 13.1.0
-     * @brief This is used for sending User's consent to behavioral advertising such as in the context of GDPR
-     * The consent value can be "0" (User has not provided consent), "1" (User has provided consent) or
-     * a daisybit string as suggested in IAB's Transparency and Consent Framework
-     *        
-     *@param consent "0" (User has not provided consent), "1" (User has provided consent) or a daisybit string as suggested in IAB's Transparency and Consent Framework
-     */
-    static void setUserConsent(TJPrivacyPolicyHandle handle, const char* consent);
-    
-    /**
      * @brief This is used for sending User's consent to behavioral advertising such as in the context of GDPR
      * The consent value can be "0" (User has not provided consent), "1" (User has provided consent) or
      * a daisybit string as suggested in IAB's Transparency and Consent Framework
@@ -650,22 +508,6 @@ public:
      * @param userConsentStatus False (User has not provided consent), True (User has provided consent) or a daisybit string as suggested in IAB's Transparency and Consent Framework, Uknown otherwise.
      */
     static void setUserConsentStatus(TJPrivacyPolicyHandle handle, TJStatusCpp userConsentStatus);
-    
-    /**
-     * Deprecated since 13.1.0
-     * @brief In the US, the Children’s Online Privacy Protection Act (COPPA) imposes certain requirements on operators of online
-     *        services that (a) have actual knowledge that the connected user is a child under 13 years of age, or (b) operate services
-     *        (including apps) that are directed to children under 13.
-     *
-     *        Similarly, the GDPR imposes certain requirements in connection with data subjects who are below the applicable local
-     *        minimum age for online consent (ranging from 13 to 16, as established by each member state).
-     *
-     *        For applications that are not directed towards children under 13 years of age, but still have a minority share of users known
-     *        to be under the applicable minimum age, utilize this method to access Tapjoy’s monetization capability. This method will set
-     *        ad_tracking_enabled to false for Tapjoy which only shows the user contextual ads. No ad tracking will be done on this user.
-     * @param isBelowConsentAge True if below consent age (COPPA) applies to this user, false otherwise
-     */
-    static void setBelowConsentAge(TJPrivacyPolicyHandle handle, bool isBelowConsentAge);
     
     /**
      * @brief In the US, the Children’s Online Privacy Protection Act (COPPA) imposes certain requirements on operators of online

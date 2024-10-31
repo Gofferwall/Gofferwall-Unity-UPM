@@ -33,6 +33,8 @@ extern "C" {
     BOOL showOfferwall(const char * unitId, DelegateOnOfferwallAdOpenedCallback openedCallback, DelegateOnOfferwallAdFailedToShowCallback failedToShowCallback);
     BOOL showOfferwall4TNK(const char * unitId, DelegateOnOfferwallAdOpenedCallback openedCallback, DelegateOnOfferwallAdFailedToShowCallback failedToShowCallback);
     BOOL showOfferwall4Tapjoy(const char * unitId, DelegateOnOfferwallAdOpenedCallback openedCallback, DelegateOnOfferwallAdFailedToShowCallback failedToShowCallback);
+    BOOL setColorOfferwall4TNK(float red, float green, float blue, float alpha);
+    BOOL setPointIconOfferwall4TNK(const char * imageName);
 
 #ifdef __cplusplus
 }

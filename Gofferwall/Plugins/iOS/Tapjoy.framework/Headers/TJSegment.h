@@ -13,4 +13,4 @@ typedef NS_ENUM(NSInteger, TJSegment) {
     TJSegmentPayer = 1,
     TJSegmentVIP = 2,
     TJSegmentUnknown = -1
-};
+} NS_SWIFT_NAME(Segment);

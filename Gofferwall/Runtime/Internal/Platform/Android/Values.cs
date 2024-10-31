@@ -21,6 +21,8 @@ namespace Gofferwall.Internal.Platform.Android
         public const string MTD_ISINITIALIZE = "isInitialized";
         public const string MTD_SET_USER_ID = "setUserId";
         public const string MTD_SHOW = "show";
+        public const string MTD_SET_COLOR = "setColor";
+        public const string MTD_SET_IMAGE = "setTNKRewardIconImage";
         public const string MTD_GET_CODE = "getCode";
         public const string MTD_GET_MESSAGE = "getMessage";
         public const string MTD_GET_XB3TRACEID = "getXb3TraceId";

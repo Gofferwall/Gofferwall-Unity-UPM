@@ -272,8 +272,8 @@ namespace Gofferwall
 
 
         private const string GOFFERWALL_FILE_PATH   = "https://github.com/Gofferwall/Gofferwall-Android-Sample/releases/download/";
-        private const string TAPJOY_FILE_PATH       = GOFFERWALL_FILE_PATH + "1.1.0/";
-        private const string TNK_FILE_PATH          = GOFFERWALL_FILE_PATH + "1.2.0/";
+        private const string TAPJOY_FILE_PATH       = GOFFERWALL_FILE_PATH + "1.3.0/";
+        private const string TNK_FILE_PATH          = GOFFERWALL_FILE_PATH + "1.3.0/";
 
         public static string GetFileName(this GofferwallFrameworkAndroidType type)
         {

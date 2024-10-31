@@ -125,6 +125,7 @@ namespace Gofferwall
                     EditorGUILayout.Space();
                     if (GUILayout.Button("Create Gofferwall Android & iOS Files", GUILayout.Height(30)))
                     {
+                        AssetDatabase.SaveAssets();
                         var aos_id = serialized.FindProperty("_mediaID_aos").stringValue;
                         var ios_id = serialized.FindProperty("_mediaID_ios").stringValue;
                         if ((aos_id != null && aos_id.Trim().Length > 0 && BuildPostProcessorForAndroid.CreateGofferwallAndroidFiles(true))

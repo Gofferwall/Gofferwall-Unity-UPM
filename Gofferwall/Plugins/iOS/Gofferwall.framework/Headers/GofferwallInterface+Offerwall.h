@@ -15,6 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)showOfferwall4TNK:(NSString *)unitID delegate:(id)delegate;
 - (BOOL)showOfferwall4Tapjoy:(NSString *)unitID delegate:(id)delegate;
 
+- (BOOL)setColorOfferwall4TNK:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha;
+- (BOOL)setPointIconOfferwall4TNK:(NSString *)imageName;
+
 @end
 
 NS_ASSUME_NONNULL_END

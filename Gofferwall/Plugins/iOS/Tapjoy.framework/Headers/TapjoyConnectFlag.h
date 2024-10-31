@@ -19,12 +19,6 @@ public:
     static const char* USER_ID;
 #if defined(ANDROID)
     /**
-     * @deprecated Deprecated since 13.2.0
-     * Sets the app to use a different market/app store other than Google Play.  If not set, Google Play will be used.
-     * Use the store name as the flag value.
-     */
-    static const char* STORE_NAME;
-    /**
      * Disables the check for the advertising ID.
      */
     static const char* DISABLE_ADVERTISING_ID_CHECK;
@@ -52,21 +46,6 @@ public:
      * Use "true" to disable automatic session tracking.
      */
     static const char* DISABLE_AUTOMATIC_SESSION_TRACKING;
-
-    //--------------------------------------------------------------------------------
-    // Use these values when using the STORE_NAME flag.
-    //--------------------------------------------------------------------------------
-    /**
-     * @deprecated Deprecated since 13.2.0
-     * Gfan store in China.<br>
-     */
-    static const char* STORE_GFAN;
-
-    /**
-     * @deprecated Deprecated since 13.2.0
-     * T-store in Korea.<br>
-     */
-    static const char* STORE_SKT;
     
 #else //iOS
     
@@ -102,14 +81,11 @@ const char* TapjoyConnectFlag::ENABLE_LOGGING = "TJC_OPTION_ENABLE_LOGGING";
 const char* TapjoyConnectFlag::USER_ID = "TJC_OPTION_USER_ID";
 
 #if defined(ANDROID)
-const char* TapjoyConnectFlag::STORE_NAME = "TJC_OPTION_STORE_NAME";
 const char* TapjoyConnectFlag::DISABLE_ADVERTISING_ID_CHECK = "TJC_OPTION_DISABLE_ADVERTISING_ID_CHECK";
 const char* TapjoyConnectFlag::DISABLE_ADVERTISING_ID = "TJC_OPTION_DISABLE_ADVERTISING_ID";
 const char* TapjoyConnectFlag::DISABLE_ANDROID_ID_AS_ANALYTICS_ID = "TJC_OPTION_DISABLE_ANDROID_ID_AS_ANALYTICS_ID";
 const char* TapjoyConnectFlag::ALLOW_LEGACY_ID_FALLBACK = "TJC_OPTION_ALLOW_LEGACY_ID_FALLBACK";
 const char* TapjoyConnectFlag::DISABLE_AUTOMATIC_SESSION_TRACKING = "TJC_OPTION_DISABLE_AUTOMATIC_SESSION_TRACKING";
-const char* TapjoyConnectFlag::STORE_GFAN = "gfan";
-const char* TapjoyConnectFlag::STORE_SKT = "skt";
 
 #else //iOS
 const char* TapjoyConnectFlag::SHARED_URL_CACHE = "TJC_OPTION_CLEAR_SHARED_URL_CACHE";
@@ -119,4 +95,3 @@ const char* TapjoyConnectFlag::DISABLE_VENDOR_ID = "TJC_OPTION_DISABLE_VENDOR_ID
 
 
 #endif
-
